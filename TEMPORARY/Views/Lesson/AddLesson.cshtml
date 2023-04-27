@@ -1,0 +1,43 @@
+﻿@model Lesson
+@{
+    ViewData["Title"] = "AddLesson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Yeni dərs əlavə et</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" asp-controller="Lesson" asp-action="AddLesson">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.LessonCode">Dərsin kodu</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.LessonCode" placeholder="Dərsin kodunu daxil edin">
+                <span asp-validation-for="@Model.LessonCode" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.LessonName">Dərsin adı</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.LessonName" placeholder="Dərsin adını daxil edin">
+                <span asp-validation-for="@Model.LessonName" class="alert-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Class">Sinif</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.Class" placeholder="Sinifi daxil edin">
+                <span asp-validation-for="@Model.Class" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.TeacherName">Müəlllimin adı</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.TeacherName" placeholder="Müəllimin adını daxil edin">
+                <span asp-validation-for="@Model.TeacherName" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.TeacherSurname">Müəlllimin soyadı</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.TeacherSurname" placeholder="Müəlllimin soyadını daxil edin">
+                <span asp-validation-for="@Model.TeacherSurname" class="alert-danger"></span>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-lg btn-success p-2" value="Təsdiqlə" />
+    </form>
+</div>
+

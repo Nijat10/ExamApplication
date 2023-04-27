@@ -1,0 +1,36 @@
+﻿@model Exam
+@{
+    ViewData["Title"] = "İmtahan əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Yeni imtahan əlavə et</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" asp-controller="Exam" asp-action="AddExam">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.LessonCode">Dərsin kodu</label>
+                <select asp-for="@Model.LessonCode" class="form-control" asp-items="@ViewBag.Lessons"></select>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.StudentNo">Tələbənin nömrəsi</label>
+                <select asp-for="@Model.StudentNo" class="form-control" asp-items="@ViewBag.Students"></select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.ExamDate">İmtahan tarixi</label>
+                <input type="date" class="form-control mb-3" asp-for="@Model.ExamDate" placeholder="İmtahan tarixini daxil edin">
+                <span asp-validation-for="@Model.ExamDate" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.ExamGrade">Qiyməti</label>
+                <input type="text" class="form-control mb-3" asp-for="@Model.ExamGrade" placeholder="Qiyməti daxil edin">
+                <span asp-validation-for="@Model.ExamGrade" class="alert-danger"></span>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-lg btn-success p-2" value="Təsdiqlə" />
+    </form>
+</div>
+

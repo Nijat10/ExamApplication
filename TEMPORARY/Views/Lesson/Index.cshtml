@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Lesson>
+@{
+    ViewData["Title"] = "Dərslər";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <a class="text-center">
+        <div class="container">
+            <a asp-controller="Lesson" asp-action="AddLesson" class="btn btn-success">Yeni dərs yarat</a>
+        </div>
+        <br />
+        <table class="table table-responsive bg-light">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.LessonCode)</td>
+                    <td>@Html.DisplayNameFor(model => model.LessonName)</td>
+                    <td>@Html.DisplayNameFor(model => model.Class)</td>
+                    <td>@Html.DisplayNameFor(model => model.TeacherName)</td>
+                    <td>@Html.DisplayNameFor(model => model.TeacherSurname)</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LessonCode</td>
+                        <td>@item.LessonName</td>
+                        <td>@item.Class</td>
+                        <td>@item.TeacherName</td>
+                        <td>@item.TeacherSurname</td>
+                        <td><a href="@Url.Action("Details","Lesson", new {code = item.LessonCode})">Ətraflı</a></td>
+                        <td><a href="@Url.Action("EditLesson","Lesson", new {code = item.LessonCode})">Dəyiş</a></td>
+                        <td><a href="@Url.Action("DeleteLesson","Lesson", new {code = item.LessonCode})">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+

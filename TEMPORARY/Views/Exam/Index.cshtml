@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Exam>
+@{
+    ViewData["Title"] = "İmtahanlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <a class="text-center">
+        <div class="container">
+            <a asp-controller="Exam" asp-action="AddExam" class="btn btn-success">Yeni imtahan yarat</a>
+        </div>
+        <br />
+        <table class="table table-responsive bg-light">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.LessonCode)</td>
+                    <td>@Html.DisplayNameFor(model => model.StudentNo)</td>
+                    <td>@Html.DisplayNameFor(model => model.ExamDate)</td>
+                    <td>@Html.DisplayNameFor(model => model.ExamGrade)</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LessonCode</td>
+                        <td>@item.StudentNo</td>
+                        <td>@item.ExamDate</td>
+                        <td>@item.ExamGrade</td>
+
+                        <td><a href="@Url.Action("Details","Exam", new {code = item.LessonCode, no = item.StudentNo})">Ətraflı</a></td>
+                        <td><a href="@Url.Action("EditExam","Exam", new {code = item.LessonCode, no = item.StudentNo})">Dəyiş</a></td>
+                        <td><a href="@Url.Action("DeleteExam","Exam", new {code = item.LessonCode, no = item.StudentNo})">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+

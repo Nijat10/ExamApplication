@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Dərslər";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <a class="text-center">
+        <div class="container">
+            <a asp-controller="Student" asp-action="AddStudent" class="btn btn-success">Yeni şagird əlavə et</a>
+        </div>
+        <br />
+        <table class="table table-responsive bg-light">
+            <thead>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.StudentNo)</td>
+                    <td>@Html.DisplayNameFor(model => model.StudentName)</td>
+                    <td>@Html.DisplayNameFor(model => model.StudentSurname)</td>
+                    <td>@Html.DisplayNameFor(model => model.Class)</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.StudentNo</td>
+                        <td>@item.StudentName</td>
+                        <td>@item.StudentSurname</td>
+                        <td>@item.Class</td>
+                        <td><a href="@Url.Action("Details","Student", new {no = item.StudentNo})">Ətraflı</a></td>
+                        <td><a href="@Url.Action("EditStudent","Student", new {no = item.StudentNo})">Dəyiş</a></td>
+                        <td><a href="@Url.Action("DeleteStudent","Student", new {no = item.StudentNo})">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+
